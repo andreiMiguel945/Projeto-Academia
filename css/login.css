@@ -1,0 +1,59 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.header h2 {
+    margin: 0;
+    color: #f8fafc;
+    font-size: 28px;
+}
+
+form {
+    background: #ffffff;
+    width: min(90vw, 360px);
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+}
+
+.campo {
+    margin-bottom: 16px;
+}
+
+label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #0f766e;
+}
+
+input, button {
+    padding: 10px;
+}
+
+button {
+    cursor: pointer;
+    margin-bottom: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    background: #0f766e;
+    color: white;
+    font-weight: bold;
+}
+
+button:active {
+    opacity: 0.8;
+}
+
+button:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+}

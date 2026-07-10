@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="icon" type="image/png" href="../imagens/logosimplificado.png">
+    <title>Login</title>
+</head>
+<body>
+    <div class="header">
+        <h2> fitness academia & fighting</h2>
+    
+    </div>
+
+    <form action="inicio.html" method="get">
+        <div class="campo">
+            <label>Nome de usuário</label><br/>
+            <input type="text" class="campo-texto" placeholder="Insira o seu nome">
+            <div class="error" id="erro-nome">Nome é um campo obrigatório</div>
+            <div class="error" id="erro-nome-invalido">Nome inválido</div>
+        </div>
+
+        <div>
+            <label>Senha</label><br/>
+            <input type="password" class="campo-texto" placeholder="Insira a sua senha">
+            <div class="error" id="erro-senha">Senha é um campo obrigatório</div>
+            <div class="error" id="erro-senha-invalida">Senha inválida</div>
+        </div>
+
+        <div>
+            <a href="#">Esqueci minha senha</a>
+        </div>
+
+        <div>
+            <button class="botao-enviar" type="submit">Entrar</button>
+        </div>
+    </form>
+</body>
+</html>
