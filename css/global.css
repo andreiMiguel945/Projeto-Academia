@@ -54,6 +54,18 @@ a:hover {
     margin: 0;
     box-sizing: border-box;
 }
+.aside {
+    grid-area: aside;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 16px;
+    background-color: rgba(19, 87, 82, 0.9);
+    padding-top: 90px;
+    gap: 16px;
+
+}
+
 
 .footer{
     grid-area: footer;
