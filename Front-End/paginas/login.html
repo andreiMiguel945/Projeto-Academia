@@ -14,17 +14,17 @@
     
     </div>
 
-    <form action="inicio.html" method="get">
+    <form id="loginForm" novalidate>
         <div class="campo">
             <label>Nome de usuário</label><br/>
-            <input type="text" class="campo-texto" placeholder="Insira o seu nome">
+            <input type="text" class="campo-texto" placeholder="Insira o seu nome" id="nomeAdmin">
             <div class="error" id="erro-nome">Nome é um campo obrigatório</div>
-            <div class="error" id="erro-nome-invalido">Nome inválido</div>
+            <div class="error" id="erro-nome-invalido" >Nome inválido</div>
         </div>
 
         <div>
             <label>Senha</label><br/>
-            <input type="password" class="campo-texto" placeholder="Insira a sua senha">
+            <input type="password" class="campo-texto" placeholder="Insira a sua senha" id="senhaAdmin">
             <div class="error" id="erro-senha">Senha é um campo obrigatório</div>
             <div class="error" id="erro-senha-invalida">Senha inválida</div>
         </div>
@@ -37,5 +37,6 @@
             <button class="botao-enviar" type="submit">Entrar</button>
         </div>
     </form>
+    <script src="../js/login.js"></script>
 </body>
 </html>
