@@ -12,9 +12,11 @@ app.use(express.json());
 
 app.get("/", (req, res) => {
     res.json({
-      message: "API RODANDO COM SUCESSO",
+            message: "API RODANDO COM SUCESSO",
     })
 })
+
+//login
 
 app.post("/login", async (req, res) => {
   const { nome, senha } = req.body;

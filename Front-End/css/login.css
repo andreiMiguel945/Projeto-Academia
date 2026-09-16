@@ -1,13 +1,17 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding-top: 0;
 }
 
 .header {
-    margin-bottom: 20px;
+    width: 100%;
     text-align: center;
+    padding: 24px 16px 12px;
+    box-sizing: border-box;
 }
 
 .header h2 {
@@ -19,13 +23,16 @@ body {
 form {
     background: #ffffff;
     width: min(90vw, 360px);
-    padding: 24px;
+    padding: 150px;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2);
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .campo {
     margin-bottom: 16px;
+       
 }
 
 label {
@@ -35,7 +42,7 @@ label {
 }
 
 input, button {
-    padding: 10px;
+    padding: 12px;
 }
 
 button {
@@ -48,7 +55,18 @@ button {
     color: white;
     font-weight: bold;
 }
-
+.input-login {
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 6px;
+}
+.input-login:focus {
+    outline: 2px solid #34d399;
+    border-color: #34d399;
+}
 button:active {
     opacity: 0.8;
 }

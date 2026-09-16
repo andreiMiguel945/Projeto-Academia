@@ -1,5 +1,4 @@
 async function connect(){
-    
     if(global.connection)
        return global.connection.connect();
     
