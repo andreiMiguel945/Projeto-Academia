@@ -20,7 +20,6 @@ app.get("/", (req, res) => {
 
 app.post("/login", async (req, res) => {
   const { nome, senha } = req.body;
-
   if (!nome || !senha) {
     return res.status(400).json({ error: "Nome e senha são obrigatórios" });
   }
@@ -44,6 +43,17 @@ app.post("/login", async (req, res) => {
   }
 })
 
+//academia
+
+app.get("/alunos", async (req, res) => {
+  try {
+    const alunos = await db.selectCustomersAlunos();
+    res.json(alunos);
+  } catch (error) {
+    console.error("Erro em GET /alunos:", error);
+    res.status(500).json({ error: "Erro ao buscar alunos" });
+  }
+});
 
 app.listen(port, () => {
   console.log(`RODANDO  NA PORTA ${port}`);

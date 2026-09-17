@@ -59,9 +59,63 @@ async function selectCustomerUsuarioByNome(nome) {
   }
 }
 
+//Alunos
+async function selectCustomersAlunos(){
+  const client = await connect();
+  try {
+    const res = await client.query("SELECT * FROM alunos");
+    return res.rows;
+  } finally {
+    client.release();
+  }
+}
+
+async function selectCustomerAlunos(id){
+  const client = await connect();
+  try {
+    const res = await client.query(
+      "SELECT * FROM alunos WHERE id = $1",
+      [id]
+    );
+    return res.rows[0] || null;
+  } finally {
+    client.release();
+  } 
+}
+  
+
+async function selectCustomerProfessores(id) {
+  const client = await connect();
+  try {
+    const res = await client.query(
+      "SELECT * FROM professores WHERE id = $1",
+      [id]
+    );
+    return res.rows[0] || null;
+  } finally {
+    client.release();
+  }
+}
+
+async function selectCustomersProfessores(){
+  const client = await connect();
+  try {
+    const res = await client.query("SELECT * FROM professores");
+    return res.rows;
+  } finally {
+    client.release();
+  }
+}
+
+  
+
 
 module.exports = {
     selectCustomersUsuarios,
     selectCustomerUsuarioByNomeSenha,
     selectCustomerUsuarioByNome,
+    selectCustomersAlunos,
+    selectCustomerAlunos,
+    selectCustomersProfessores,
+    selectCustomerProfessores
 }
