@@ -55,6 +55,16 @@ app.get("/alunos", async (req, res) => {
   }
 });
 
+app.get("/professores", async (req, res) => {
+  try {
+    const professores = await db.selectCustomersProfessores();
+    res.json(professores);
+  } catch (error) {
+    console.error("Erro em GET /professores: ", error);
+    res.status(500).json({ error: "Erro ao buscar professores" });
+  }
+});
+
 app.listen(port, () => {
-  console.log(`RODANDO  NA PORTA ${port}`);
+   console.log(`RODANDO  NA PORTA ${port}`);
 });

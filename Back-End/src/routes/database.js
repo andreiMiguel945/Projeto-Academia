@@ -83,6 +83,17 @@ async function selectCustomerAlunos(id){
   } 
 }
   
+//Professores
+async function selectCustomersProfessores(){
+  const client = await connect();
+  try {
+    const res = await client.query("SELECT * FROM professores");
+    return res.rows;
+  } finally {
+    client.release();
+  }
+}
+
 
 async function selectCustomerProfessores(id) {
   const client = await connect();
@@ -96,17 +107,6 @@ async function selectCustomerProfessores(id) {
     client.release();
   }
 }
-
-async function selectCustomersProfessores(){
-  const client = await connect();
-  try {
-    const res = await client.query("SELECT * FROM professores");
-    return res.rows;
-  } finally {
-    client.release();
-  }
-}
-
   
 
 

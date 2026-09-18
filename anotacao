@@ -1,0 +1,234 @@
+
+
+//Alunos
+/*app.get("/alunos/:id", async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  if (Number.isNaN(id)) return res.status(400).json({ error: 'ID inválido' });
+
+  try {
+    const aluno = await db.selectCustomerAlunos(id);
+    if (!aluno) return res.status(404).json({ error: 'Aluno não encontrado' });
+    res.json(aluno);
+  } catch (error) {
+    console.error('Erro em GET /alunos/:id', error);
+    res.status(500).json({ error: 'Erro ao buscar aluno' });
+  }
+
+});
+app.get("/alunos", async (req, res) => {
+    try {
+      const alunos = await db.selectCustomersAlunos();
+      res.json(alunos);
+    } catch (error) {
+      console.error("Erro em GET /alunos:", error);
+      res.status(500).json({ error: "Erro ao buscar alunos" });
+    }
+})
+
+//Professores
+app.get("/professores/:id", async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  if (Number.isNaN(id)) return res.status(400).json({ error: 'ID inválido' });
+
+  try {
+    const professor = await db.selectCustomerProfessores(id);
+    if (!professor) return res.status(404).json({ error: 'Professor não encontrado' });
+    res.json(professor);
+  } catch (error) {
+    console.error('Erro em GET /professores/:id', error);
+    res.status(500).json({ error: 'Erro ao buscar professor' });
+  }
+
+});
+app.get("/professores", async (req, res) => {
+    try {
+      const professores = await db.selectCustomersProfessores();
+      res.json(professores);
+    } catch (error) {
+      console.error("Erro em GET /professores:", error);
+      res.status(500).json({ error: "Erro ao buscar professores" });
+    }
+})
+
+app.get("/usuarios", async (req, res) => {
+  try {
+    const usuarios = await db.selectCustomersUsuarios();
+    res.json(usuarios);
+  } catch (error) {
+    console.error("Erro em GET /usuarios:", error);
+    res.status(500).json({ error: "Erro ao buscar usuários" });
+  }
+})
+
+
+
+
+
+//Adicionar aluno(IA)
+   <section class="main">
+            <div class="toolbar">
+                <button id="btnAbrirFormulario" class="btn-primario" type="button">Adicionar aluno</button>
+            </div>
+
+            <div id="modalFormulario" class="modal" aria-hidden="true">
+                <div class="modal-conteudo" role="dialog" aria-modal="true" aria-labelledby="tituloModal">
+                    <button type="button" id="btnFecharModal" class="fechar" aria-label="Fechar">×</button>
+                    <h2 id="tituloModal">Novo aluno</h2>
+
+                    <form id="formAluno">
+                        <label>
+                            Nome:
+                            <input type="text" name="nome" placeholder="Digite o nome" required>
+                        </label>
+
+                        <label>
+                            E-mail:
+                            <input type="email" name="email" placeholder="Digite o e-mail" required>
+                        </label>
+
+                        <label>
+                            Status:
+                            <input type="text" name="status" placeholder="Ativo ou Inativo" required>
+                        </label>
+
+                        <button type="submit" class="btn-salvar">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2026 Fitness & Fighting Londrina. Todos os direitos reservados.</p>
+        </footer>
+    </main>
+
+
+
+      <style>
+     
+        .toolbar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 8px;
+        }
+
+        .btn-primario {
+            background: #0f766e;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 18px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .btn-primario:hover {
+            background: #0b5d5a;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.aberto {
+            display: flex;
+        }
+
+        .modal-conteudo {
+            position: relative;
+            background: #fff;
+            width: min(420px, 90vw);
+            border-radius: 12px;
+            padding: 24px 20px 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .fechar {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: transparent;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #334155;
+        }
+
+        .modal-conteudo h2 {
+            margin-top: 0;
+            margin-bottom: 16px;
+            color: #0f172a;
+        }
+
+        .modal-conteudo label {
+            display: block;
+            margin-bottom: 12px;
+            font-weight: bold;
+            color: #0f172a;
+        }
+
+        .modal-conteudo input {
+            margin-top: 6px;
+        }
+
+        .btn-salvar {
+            background: #10b981;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 10px 18px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+
+
+
+
+    <script>
+        const btnAbrirFormulario = document.getElementById("btnAbrirFormulario");
+        const modalFormulario = document.getElementById("modalFormulario");
+        const btnFecharModal = document.getElementById("btnFecharModal");
+        const formAluno = document.getElementById("formAluno");
+
+        function abrirModal() {
+            modalFormulario.classList.add("aberto");
+            modalFormulario.setAttribute("aria-hidden", "false");
+        }
+
+        function fecharModal() {
+            modalFormulario.classList.remove("aberto");
+            modalFormulario.setAttribute("aria-hidden", "true");
+        }
+
+        btnAbrirFormulario.addEventListener("click", abrirModal);
+        btnFecharModal.addEventListener("click", fecharModal);
+
+        modalFormulario.addEventListener("click", (event) => {
+            if (event.target === modalFormulario) {
+                fecharModal();
+            }
+        });
+
+        formAluno.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            const nome = formAluno.nome.value.trim();
+            const email = formAluno.email.value.trim();
+            const status = formAluno.status.value.trim();
+
+            console.log({ nome, email, status });
+            alert("Aluno salvo com sucesso!");
+
+            formAluno.reset();
+            fecharModal();
+        });
+    </script>

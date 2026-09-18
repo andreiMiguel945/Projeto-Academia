@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="../../css/global.css">
     <link rel="stylesheet" href="../../css/gerenciamentoAcademia.css">
     <link rel="icon" type="image/png" href="../../imagens/logosimplificado.png">
+    <script src="../../js/Alunos_Academia.js"></script>
+    
     <title>Academia - Alunos</title>
 </head>
 <body>
@@ -21,34 +23,12 @@
             <a href="gerenciamentoTurmasAcademia.html">Turmas</a><br>
             <a href="../login.html">sair</a>
         </aside>
-
+         
         <footer class="footer">
             <p>© 2026 Fitness & Fighting Londrina. Todos os direitos reservados.</p>
         </footer>
 
     </main>
-    <script>
-        async function carregarAlunos() {
-            const resposta = await fetch("http://localhost:3000/alunos");
-            const alunos = await resposta.json();
-            const tabela = document.createElement("table");
-            tabela.innerHTML = `
-                <thead><tr><th>ID</th><th>Nome</th><th>E-mail</th><th>Status</th></tr></thead>
-                <tbody>${alunos.map(aluno => `
-                    <tr>
-                        <td>${aluno.id ?? ""}</td>
-                        <td>${aluno.nome ?? ""}</td>
-                        <td>${aluno.email ?? ""}</td>
-                        <td>${aluno.status ?? ""}</td>
-                    </tr>`).join("")}</tbody>`;
-            document.querySelector(".layout").insertBefore(tabela, document.querySelector(".footer"));
-        }
-
-        carregarAlunos().catch(() => {
-            const mensagem = document.createElement("p");
-            mensagem.textContent = "Não foi possível carregar os alunos.";
-            document.querySelector(".layout").insertBefore(mensagem, document.querySelector(".footer"));
-        });
-    </script>
+    
 </body>
 </html>
