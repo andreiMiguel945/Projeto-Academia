@@ -63,7 +63,11 @@ async function selectCustomerUsuarioByNome(nome) {
 async function selectCustomersAlunos(){
   const client = await connect();
   try {
-    const res = await client.query("SELECT * FROM alunos");
+    const res = await client.query(`
+      SELECT a.*, m.nome AS nome_modalidade
+      FROM alunos a
+      LEFT JOIN modalidades m ON m.id_modalidade = a.id_modalidade
+    `);
     return res.rows;
   } finally {
     client.release();
@@ -74,7 +78,10 @@ async function selectCustomerAlunos(id){
   const client = await connect();
   try {
     const res = await client.query(
-      "SELECT * FROM alunos WHERE id = $1",
+      `SELECT a.*, m.nome AS nome_modalidade
+       FROM alunos a
+       LEFT JOIN modalidades m ON m.id_modalidade = a.id_modalidade
+       WHERE a.id = $1`,
       [id]
     );
     return res.rows[0] || null;
