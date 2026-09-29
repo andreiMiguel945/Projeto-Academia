@@ -43,7 +43,6 @@ app.post("/login", async (req, res) => {
   }
 })
 
-//academia
 
 app.get("/alunos", async (req, res) => {
   try {
